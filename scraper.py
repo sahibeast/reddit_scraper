@@ -3,13 +3,17 @@
 
 import requests
 from bs4 import BeautifulSoup, NavigableString
+import webbrowser
 
 #get specified item
 #in this case, vilalgeporn url for the front page of the subreddit
 def get_item(r):
     data = r.json()
 
-    #print data["data"]["children"][0]["data"]["url"]
+    image = data["data"]["children"][0]["data"]["url"]
+	
+	#opens image url in defaulr web browser
+    webbrowser.open(image,new=1,autoraise=True)
 
     for i, v in enumerate(data["data"]["children"]):
         print v["data"]["url"]
